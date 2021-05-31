@@ -43,7 +43,7 @@ $(function() {
 			scatterSvg.append('circle')
 				.attr('cx', scatterX(scatterPlotData[i].retail_and_recreation))
 				.attr('cy', scatterY(scatterPlotData[i].value))
-				.attr('r', 3)
+				.attr('r', 4)
 				.attr('class', 'scatter-point')
 				.attr('fill', color(i));
 			if (i > 0) {
@@ -51,7 +51,7 @@ $(function() {
 				scatterSvg.append('circle')
 					.attr('cx', scatterX(scatterPlotData[i - 1].retail_and_recreation))
 					.attr('cy', scatterY(scatterPlotData[i - 1].value))
-					.attr('r', 3)
+					.attr('r', 4)
 					.attr('class', 'scatter-point')
 					.attr('fill', color(i));
 			}
@@ -361,7 +361,7 @@ $(function() {
 			.append('circle')
 				.attr('cx', function(d) { return scatterX(d.retail_and_recreation); })
 				.attr('cy', function(d) { return scatterY(d.value); })
-				.attr('r', 3)
+				.attr('r', 4)
 				.attr('class', 'scatter-point')
 				.attr('fill', function(d, i) { return color(i); });
 		scatterSvg.append('text')
