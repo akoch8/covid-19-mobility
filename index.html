@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Community mobility</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="robots" content="noindex, nofollow">
+		<link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="index.css">
+	</head>
+	<body>
+		<main>
+			<section>
+				<h1>
+					Linking mobility and COVID-19 hospitalisations
+					<div class="title-styling"></div>
+				</h1>
+				<p>
+					Since the start of the COVID-19 pandemic, Google has collected <a href="https://www.google.com/covid19/mobility/" target="_blank">data</a> on the movement of people across different types of places, such as parks, workplaces, or transit stations. These data show how the number of people that visited a particular type of place has changed compared to a pre-pandemic baseline (January 3 &ndash; February 6, 2020). To know whether these changes in mobility are linked to the number of hospitalisations in Europe, we can calculate the correlation between them.
+				</p>
+			</section>
+			<section>
+				<h2>
+					Correlation analysis
+					<div class="title-styling"></div>
+				</h2>
+				<p>
+					By calculating the correlation between the change in mobility for each of the location types and the number of hospitalisations, we see that an increase in the mobility for "residential" category (i.e. people stay more at home) correlates with fewer hospitalisations. The strongest correlation was found between a decrease in the "retail and recreation" category (i.e. less shopping, fewer restaurant visits) and an increasing number of hospitalisations.
+				</p>
+				<p>
+					We can look at this finding from two angles. The first one is that, as more and more people are hospitalised, European governments start closing movie theatres, museums, bars, and restaurants and restrict shopping, automatically leading to fewer people visiting these places. The second one is that shopping and restaurant visits might be the strongest drivers for virus transmission. The negative correlation might seem counterintuitive, but we have to take the incubation time of the virus into account, meaning that the number of hospitalisations will still be going up after people have stopped going to bars and restaurants.
+				</p>
+				<div class="toolbar">
+					<h3>Can we link location types to hospitalisations?</h3>
+					Click on the bar of a location category to explore the correlation on a country level in the map below.
+				</div>
+				<div id="correlation"></div>
+				<div class="map-wrapper">
+					<div id="eu-map-arrow"></div>
+					<div id="eu-map" class="center-content"></div>
+				</div>
+			</section>
+			<section>
+				<h2>
+					Wave after wave
+					<div class="title-styling"></div>
+				</h2>
+				<p>
+					Simply plotting the change in mobility for retail and entertainment against the number of hospitalisations does not reveal much more than the global negative correlation between them. However, by connecting the points corresponding to consecutive weeks, we can follow the evolution over time and see interesting patterns, such as the three waves that swept across Europe and the relatively quiet summer of 2020.
+				</p>
+				<div>
+					<div class="scatter-wrapper">
+						<div class="toolbar">
+							<h3>Following changes in mobility and hospitalisations over time</h3>
+							<p>
+								Click the play button or use the slider to see the change over time of the retail and recreation mobility change versus the number of hospitalisations.
+							</p>
+							<div class="play-button">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="svg-icon play">
+									<polygon points="5 3 19 12 5 21 5 3"></polygon>
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="svg-icon pause">
+									<rect x="6" y="4" width="4" height="16"></rect>
+									<rect x="14" y="4" width="4" height="16"></rect>
+								</svg>
+							</div>
+							<span>2020 &ndash; week 7</span>
+							<input type="range" id="week-slider" min="1" max="66" value="66">
+							<span>2021 &ndash; week 19</span>
+						</div>
+						<div id="connected-scatter"></div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>
+					Data sources
+					<div class="title-styling"></div>
+				</h2>
+				<ul>
+					<li>
+						Google mobility data: 
+						<a href="https://www.google.com/covid19/mobility/" target="_blank">https://www.google.com/covid19/mobility/</a>
+					</li>
+					<li>
+						European Centre for Disease Prevention and Control: 
+						<a href="https://www.ecdc.europa.eu/en/publications-data/download-data-hospital-and-icu-admission-rates-and-current-occupancy-covid-19" target="_blank">https://www.ecdc.europa.eu/en/publications-data/download-data-hospital-and-icu-admission-rates-and-current-occupancy-covid-19</a>
+					</li>
+				</ul>
+			</section>
+		</main>
+		<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+		<script type="text/javascript" src="d3.v3.min.js"></script>
+		<script type="text/javascript" src="topojson.min.js"></script>
+		<script type="text/javascript" src="plots-mobility.js"></script>
+	</body>
+</html>

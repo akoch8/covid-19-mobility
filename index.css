@@ -1,0 +1,288 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-variant-ligatures: none;
+}
+
+html, body {
+	color: #2f2f2f;
+	font: 16px/1.5 'Ubuntu', sans-serif;
+}
+
+h1 {
+	font-size: 3rem;
+	margin: 1em 0;
+}
+
+h2 {
+	font-size: 2rem;
+	margin-bottom: 1em;
+}
+
+h3 {
+	font-weight: 700;
+	margin-bottom: 0.5em;
+}
+
+h1, h2 {
+	font-family: 'Alegreya', serif;
+	font-weight: 400;
+	line-height: 1.2;
+	position: relative;
+}
+
+h1 img {
+	display: block;
+	left: -100px;
+	position: absolute;
+	top: 20px;
+	width: 80px;
+	z-index: -1;
+}
+
+.title-styling {
+	background: #fff7c9;
+	height: 100%;
+	left: -2rem;
+	position: absolute;
+	top: 0;
+	width: 10px;
+}
+
+a {
+	color: #008080;
+}
+
+a:visited {
+	color: #008080;
+}
+
+main {
+	display: block;
+	margin: 0 auto;
+	max-width: 900px;
+	width: 100%;
+}
+
+section {
+	margin: 0 auto 2em auto;
+	padding: 1em 0;
+	width: 100%;
+}
+
+.map-wrapper {
+	position: relative;
+}
+
+#eu-map-arrow {
+	left: 120px;
+	position: absolute;
+	top: -20px;
+}
+
+.linking-arrow {
+	fill: none;
+	stroke: #777;
+	stroke-width: 2;
+}
+
+p {
+	margin-bottom: 1em;
+}
+
+input[type='range'] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	margin: 0 0.5em;
+	vertical-align: middle;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: #eee;
+	border: 1px solid #777;
+	border-radius: 2px;
+	cursor: pointer;
+	height: 4px;
+	width: 100%;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: #eee;
+	border: 1px solid #3d3d3d;
+	border-radius: 7px;
+	cursor: pointer;
+	height: 14px;
+	margin-top: -6px;
+	width: 14px;
+}
+
+svg {
+	/*border: 1px solid #ddd;*/
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 14px;
+	shape-rendering: geometricPrecision;
+}
+
+.barplot-line {
+	stroke: #ddd;
+	stroke-width: 1;
+}
+
+.barplot-line-main {
+	stroke: #333;
+	stroke-width: 2;
+}
+
+.barplot-bar:hover {
+	cursor: pointer;
+}
+
+.axis {
+	font-size: 12px;
+}
+
+.axis path, .axis line {
+	fill: none;
+	shape-rendering: crispEdges;
+	stroke: #777;
+	stroke-linecap: square;
+	stroke-width: 1;
+}
+
+.axis text {
+	fill: #777;
+}
+
+.scatter-point {
+	z-index: 2;
+}
+
+.scatter-line {
+	fill: none;
+	stroke: #ccc;
+	stroke-width: 1;
+}
+
+.play-button {
+	background: #eee;
+	border: 1px solid #777;
+	display: inline-block;
+	line-height: 0;
+	margin-right: 1rem;
+	padding: 0.2rem 0.5rem;
+}
+
+.play-button:hover {
+	cursor: pointer;
+}
+
+.play-button:active {
+	background: #ddd;
+}
+
+.play-button svg {
+	fill: none;
+	shape-rendering: geometricPrecision;
+	stroke: #3d3d3d;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 2;
+	vertical-align: middle;
+}
+
+.center-content {
+	text-align: center;
+}
+
+#eu-map svg {
+	border: 1px solid #ccc;
+}
+
+.eu-country {
+	fill: #f5f5f5;
+	stroke: #ccc;
+	stroke-width: 1;
+}
+
+.legend {
+	fill: url('#svgGradient');
+	stroke: #ccc;
+	stroke-width: 1;
+}
+
+.legend-scatter {
+	fill: url('#svgGradientWeeks');
+	stroke: #ccc;
+	stroke-width: 1;
+}
+
+.legend-text {
+	alignment-baseline: middle;
+	fill: #3d3d3d;
+	font-size: 12px;
+}
+
+.map-title {
+	font-weight: 700;
+}
+
+.scatter-wrapper {
+	display: inline-block;
+	margin: 1em auto;
+}
+
+.scatter-wrapper p {
+	text-align: left;
+}
+
+.toolbar {
+	color: #777;
+	font-size: 14px;
+	margin-top: 2em;
+	max-width: 600px;
+	padding-left: 60px;
+}
+
+.toolbar h3 {
+	color: initial;
+}
+
+.axis-label {
+	fill: #777;
+}
+
+.plot-annotation {
+	fill: #3d3d3d;
+}
+
+.point-annotation {
+	fill: #777;
+	font-size: 12px;
+}
+
+.arrow {
+	fill: none;
+	stroke: #3d3d3d;
+	stroke-linecap: round;
+	stroke-linejoin: miter;
+	stroke-width: 1;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	margin-bottom: 1em;
+}
