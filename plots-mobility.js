@@ -177,14 +177,15 @@ $(function() {
 	d3.json('europe.topojson', function(error, eu) {
 		if (error) throw error;
 		
-		var width = 400;
-		var height = 300;
 		var margin = {
 			top: 50,
 			right: 80,
 			bottom: 10,
 			left: 20
 		};
+		//var width = 400;
+		var width = $('main').width() / 2 - margin.left - margin.right;
+		var height = width;
 		var featureCollection = topojson.feature(eu, eu.objects.europe);
 		var svg = d3.select('#eu-map').append('svg')
 			.attr('width', width + margin.left + margin.right)
@@ -192,8 +193,8 @@ $(function() {
 			.append('g')
 			.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 		var projection = d3.geo.mercator()
-			.scale(1500)
-			.center([13, 55])
+			.scale(1700)
+			.center([8, 56])
 			.translate([width / 2, height / 2])
 			.precision(0.1);
 		var path = d3.geo.path().projection(projection);
