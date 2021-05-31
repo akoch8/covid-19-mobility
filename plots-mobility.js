@@ -378,7 +378,7 @@ $(function() {
 			.attr('y', height + 40)
 			.style('text-anchor', 'middle')
 			.attr('class', 'axis-label')
-			.text('Weekly change in retail and entertainment mobility');
+			.text('Weekly change in retail and entertainment mobility (%)');
 		scatterSvg.append('text')
 			.attr('x', -50)
 			.attr('y', height / 2)
