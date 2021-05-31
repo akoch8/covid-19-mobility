@@ -287,9 +287,30 @@ li {
 	margin-bottom: 1em;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	.axis {
+		font-size: 10px;
+	}
 	#eu-map-arrow {
 		display: none;
+	}
+	.toolbar {
+		padding-left: 0;
+	}
+	.toolbar p {
+		font-size: 12px;
+	}
+	.arrow {
+		display: none;
+	}
+	.legend-text {
+		font-size: 10px;
 	}
 }
 

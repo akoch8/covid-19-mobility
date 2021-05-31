@@ -185,6 +185,11 @@ $(function() {
 		};
 		//var width = 400;
 		var width = $('main').width() / 2 - margin.left - margin.right;
+		var projectionScale = 1700;
+		if (screen.width <= 768) {
+			width = $('main').width() * 0.95 - margin.left - margin.right;
+			projectionScale = 1000;
+		}
 		var height = width;
 		var featureCollection = topojson.feature(eu, eu.objects.europe);
 		var svg = d3.select('#eu-map').append('svg')
@@ -193,7 +198,7 @@ $(function() {
 			.append('g')
 			.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 		var projection = d3.geo.mercator()
-			.scale(1700)
+			.scale(projectionScale)
 			.center([8, 56])
 			.translate([width / 2, height / 2])
 			.precision(0.1);
@@ -297,6 +302,9 @@ $(function() {
 
 		var i, v;
 		var width = $('main').width();
+		if (screen.width <= 768) {
+			width *= 0.9;
+		}
 		//var maxDim = $(window).height() * 0.8;
 		//width = width > maxDim ? maxDim : width;
 		//var height = width;
@@ -380,102 +388,104 @@ $(function() {
 			.text('Number of hospitalisations per week');
 		
 		// Plot annotation
-		scatterSvg.append('line')
-			.attr('x1', scatterX(-68))
-			.attr('x2', scatterX(-64))
-			.attr('y1', scatterY(4800))
-			.attr('y2', scatterY(4800))
-			.attr('class', 'arrow');
-		scatterSvg.append('path')
-			.attr('d', 'M ' + scatterX(-64.5) + ',' + scatterY(4850) + ' ' + scatterX(-64) + ',' + scatterY(4800) + ' ' + scatterX(-64.5) + ',' + scatterY(4750))
-			.attr('class', 'arrow');
-		scatterSvg.append('text')
-			.attr('x', scatterX(-68))
-			.attr('y', scatterY(4600))
-			.attr('class', 'plot-annotation')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('Movement to the left indicates an increase in the number');
-		scatterSvg.append('text')
-			.attr('x', scatterX(-68))
-			.attr('y', scatterY(4450))
-			.attr('class', 'plot-annotation')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('of people at shops, restaurants, cafes...');
-		scatterSvg.append('line')
-			.attr('x1', scatterX(-68))
-			.attr('x2', scatterX(-68))
-			.attr('y1', scatterY(250))
-			.attr('y2', scatterY(550))
-			.attr('class', 'arrow');
-		scatterSvg.append('path')
-			.attr('d', 'M ' + scatterX(-68.5) + ',' + scatterY(500) + ' ' + scatterX(-68) + ',' + scatterY(550) + ' ' + scatterX(-67.5) + ',' + scatterY(500))
-			.attr('class', 'arrow');
-		scatterSvg.append('text')
-			.attr('x', scatterX(-67))
-			.attr('y', scatterY(400))
-			.attr('class', 'plot-annotation')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('Upward movement indicates an increase in hospitalisations');
+		if (screen.width > 768) {
+			scatterSvg.append('line')
+				.attr('x1', scatterX(-68))
+				.attr('x2', scatterX(-64))
+				.attr('y1', scatterY(4800))
+				.attr('y2', scatterY(4800))
+				.attr('class', 'arrow');
+			scatterSvg.append('path')
+				.attr('d', 'M ' + scatterX(-64.5) + ',' + scatterY(4850) + ' ' + scatterX(-64) + ',' + scatterY(4800) + ' ' + scatterX(-64.5) + ',' + scatterY(4750))
+				.attr('class', 'arrow');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-68))
+				.attr('y', scatterY(4600))
+				.attr('class', 'plot-annotation')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('Movement to the left indicates an increase in the number');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-68))
+				.attr('y', scatterY(4450))
+				.attr('class', 'plot-annotation')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('of people at shops, restaurants, cafes...');
+			scatterSvg.append('line')
+				.attr('x1', scatterX(-68))
+				.attr('x2', scatterX(-68))
+				.attr('y1', scatterY(250))
+				.attr('y2', scatterY(550))
+				.attr('class', 'arrow');
+			scatterSvg.append('path')
+				.attr('d', 'M ' + scatterX(-68.5) + ',' + scatterY(500) + ' ' + scatterX(-68) + ',' + scatterY(550) + ' ' + scatterX(-67.5) + ',' + scatterY(500))
+				.attr('class', 'arrow');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-67))
+				.attr('y', scatterY(400))
+				.attr('class', 'plot-annotation')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('Upward movement indicates an increase in hospitalisations');
 
-		scatterSvg.append('text')
-			.attr('x', scatterX(-65))
-			.attr('y', scatterY(3000))
-			.attr('class', 'point-annotation index-7')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('Turning point of the first wave');
-		scatterSvg.append('text')
-			.attr('x', scatterX(0))
-			.attr('y', scatterY(500))
-			.attr('class', 'point-annotation index-24')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('Low numbers in the');
-		scatterSvg.append('text')
-			.attr('x', scatterX(0))
-			.attr('y', scatterY(350))
-			.attr('class', 'point-annotation index-24')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('summer of 2020');
-		scatterSvg.append('text')
-			.attr('x', scatterX(-22))
-			.attr('y', scatterY(2000))
-			.attr('class', 'point-annotation index-36')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('Second wave picking up steam');
-		scatterSvg.append('text')
-			.attr('x', scatterX(-45))
-			.attr('y', scatterY(2650))
-			.attr('class', 'point-annotation index-54')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('Start of the third wave, before');
-		scatterSvg.append('text')
-			.attr('x', scatterX(-45))
-			.attr('y', scatterY(2500))
-			.attr('class', 'point-annotation index-54')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('hospitalisations recovered');
-		scatterSvg.append('text')
-			.attr('x', scatterX(-13))
-			.attr('y', scatterY(2600))
-			.attr('class', 'point-annotation index-65')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('Fewer hospitalisations as more and more');
-		scatterSvg.append('text')
-			.attr('x', scatterX(-13))
-			.attr('y', scatterY(2450))
-			.attr('class', 'point-annotation index-65')
-			.style('text-anchor', 'start')
-			.style('alignment-baseline', 'middle')
-			.text('people are vaccinated');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-65))
+				.attr('y', scatterY(3000))
+				.attr('class', 'point-annotation index-7')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('Turning point of the first wave');
+			scatterSvg.append('text')
+				.attr('x', scatterX(0))
+				.attr('y', scatterY(500))
+				.attr('class', 'point-annotation index-24')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('Low numbers in the');
+			scatterSvg.append('text')
+				.attr('x', scatterX(0))
+				.attr('y', scatterY(350))
+				.attr('class', 'point-annotation index-24')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('summer of 2020');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-22))
+				.attr('y', scatterY(2000))
+				.attr('class', 'point-annotation index-36')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('Second wave picking up steam');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-45))
+				.attr('y', scatterY(2650))
+				.attr('class', 'point-annotation index-54')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('Start of the third wave, before');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-45))
+				.attr('y', scatterY(2500))
+				.attr('class', 'point-annotation index-54')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('hospitalisations recovered');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-13))
+				.attr('y', scatterY(2600))
+				.attr('class', 'point-annotation index-65')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('Fewer hospitalisations as more and more');
+			scatterSvg.append('text')
+				.attr('x', scatterX(-13))
+				.attr('y', scatterY(2450))
+				.attr('class', 'point-annotation index-65')
+				.style('text-anchor', 'start')
+				.style('alignment-baseline', 'middle')
+				.text('people are vaccinated');
+		}
 
 		// Legend
 		// Create the gradient that will be used for the figure legends.
@@ -497,22 +507,41 @@ $(function() {
 			.attr('stop-color', '#ffc6c4')
 			.attr('stop-opacity', 1);
 
-		scatterSvg.append('rect')
-			.attr('class', 'legend-scatter')
-			.attr('x', scatterX(0))
-			.attr('y', scatterY(4500))
-			.attr('width', 10)
-			.attr('height', 100);
-		scatterSvg.append('text')
-			.attr('class', 'legend-text')
-			.attr('x', scatterX(1.5))
-			.attr('y', scatterY(4500))
-			.text('2021 - week 19');
-		scatterSvg.append('text')
-			.attr('class', 'legend-text')
-			.attr('x', scatterX(1.5))
-			.attr('y', scatterY(4500) + 100)
-			.text('2020 - week 7');
+		if (screen.width <= 768) {
+			scatterSvg.append('rect')
+				.attr('class', 'legend-scatter')
+				.attr('x', scatterX(-10))
+				.attr('y', scatterY(4500))
+				.attr('width', 8)
+				.attr('height', 60);
+			scatterSvg.append('text')
+				.attr('class', 'legend-text')
+				.attr('x', scatterX(-6))
+				.attr('y', scatterY(4500))
+				.text('2021 - week 19');
+			scatterSvg.append('text')
+				.attr('class', 'legend-text')
+				.attr('x', scatterX(-6))
+				.attr('y', scatterY(4500) + 60)
+				.text('2020 - week 7');
+		} else {
+			scatterSvg.append('rect')
+				.attr('class', 'legend-scatter')
+				.attr('x', scatterX(0))
+				.attr('y', scatterY(4500))
+				.attr('width', 10)
+				.attr('height', 100);
+			scatterSvg.append('text')
+				.attr('class', 'legend-text')
+				.attr('x', scatterX(1.5))
+				.attr('y', scatterY(4500))
+				.text('2021 - week 19');
+			scatterSvg.append('text')
+				.attr('class', 'legend-text')
+				.attr('x', scatterX(1.5))
+				.attr('y', scatterY(4500) + 100)
+				.text('2020 - week 7');
+		}
 	});
 
 	var correlationByCountry;
