@@ -404,7 +404,7 @@ $(function() {
 				.attr('class', 'plot-annotation')
 				.style('text-anchor', 'start')
 				.style('alignment-baseline', 'middle')
-				.text('Movement to the left indicates an increase in the number');
+				.text('Movement to the right indicates an increase in the number');
 			scatterSvg.append('text')
 				.attr('x', scatterX(-68))
 				.attr('y', scatterY(4450))
